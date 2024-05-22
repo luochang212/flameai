@@ -10,6 +10,12 @@ Install the package:
 pip install flameai
 ```
 
+Update the package:
+
+```bash
+pip3 install --upgrade flameai
+```
+
 ## Usage
 
 Example:
