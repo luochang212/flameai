@@ -43,10 +43,17 @@ confusion matrix:
 
 ## Development
 
+Build:
+
 ```bash
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade build
 
-# Build
 python3 -m build
+```
+
+Upload:
+
+```bash
+twine upload dist/* 
 ```
