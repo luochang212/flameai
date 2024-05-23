@@ -1,4 +1,3 @@
 .DS_Store
-
 /dist/*
 /src/flame/__pycache__/*
