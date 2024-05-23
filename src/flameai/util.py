@@ -26,11 +26,11 @@ def read_csv(file_path: str,
     Read a CSV file from the specified path.
     """
     return pd.read_csv(file_path,
-                       header=header,
-                       sep=sep,
-                       on_bad_lines=on_bad_lines,
-                       encoding=encoding,
-                       dtype=dtype)
+                       header = header,
+                       sep = sep,
+                       on_bad_lines = on_bad_lines,
+                       encoding = encoding,
+                       dtype = dtype)
 
 
 def set_logger(name: str = 'flameai', level: int = logging.WARNING):

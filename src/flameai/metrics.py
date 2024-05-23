@@ -2,8 +2,16 @@ import numpy as np
 import pandas as pd
 import sklearn.metrics
 
+from enum import Enum
 from typing import Tuple, Optional, Any
 from .train import gen_threshold
+
+
+class Metric(Enum):
+    ACCURACY = sklearn.metrics.accuracy_score
+    PRECISION = sklearn.metrics.precision_score
+    RECALL = sklearn.metrics.recall_score
+    F1_SCORE = sklearn.metrics.f1_score
 
 
 def lgb_feature_importance(gbm) -> None:
@@ -38,6 +46,7 @@ def eval_continuous(y_true, y_pred) -> None:
 def eval_binary(y_true,
                 y_pred,
                 threshold: Optional[float] = None,
+                metric: Metric = Metric.F1_SCORE,
                 n_trials: int = 200,
                 ret: bool = False
     ) -> Optional[Tuple[Any, float]]:
@@ -50,6 +59,7 @@ def eval_binary(y_true,
                       If the predicted probability is greater than the threshold,
                       it is classified as a positive case. If the threshold is None,
                       the optuna package will be used to calculate the optimal threshold.
+    :param metric: The metric used to evaluate the model. Default is Metric.F1_SCORE.
     :param n_trials: The number of trials for threshold generation. Default is 200.
     :param ret: A flag to indicate if the function should return the predicted labels and threshold. Default is False.
     :return: If ret is True, the function returns the predicted labels and threshold.
@@ -61,7 +71,7 @@ def eval_binary(y_true,
 
     # If the threshold does not exist, obtain it
     if threshold is None:
-        threshold = gen_threshold(y_true, y_pred, n_trials)
+        threshold = gen_threshold(y_true, y_pred, metric, n_trials)
 
     y_label = [1 if e > threshold else 0 for e in y_pred]
 

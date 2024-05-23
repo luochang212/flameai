@@ -40,25 +40,24 @@ class AdaptiveLearningRate:
         env.model.params['learning_rate'] = self.learning_rate
 
 
-def gen_threshold(y_true, y_pred, n_trials):
+def gen_threshold(y_true, y_pred, metric, n_trials: int) -> float:
     """
-    Aiming to maximize the f1_score, find the optimal threshold.
+    Finds the optimal threshold based on the desired metric
     """
 
     # Set the logging level to ERROR
     verbose = optuna.logging.get_verbosity()
     optuna.logging.set_verbosity(optuna.logging.ERROR)
 
-    def f1_objective(trial):
+    def objective(trial):
         t = trial.suggest_float('threshold', 0.0, 1.0)
         y_label = [1 if e > t else 0 for e in y_pred]
-        f1 = sklearn.metrics.f1_score(y_true=y_true, y_pred=y_label)
-        return f1
-    
-    f1_study = optuna.create_study(direction='maximize')
-    f1_study.optimize(f1_objective, n_trials=n_trials)
-    best_params = f1_study.best_params
-    
+        return metric(y_true = y_true, y_pred = y_label)
+
+    study = optuna.create_study(direction = 'maximize')
+    study.optimize(objective, n_trials = n_trials)
+    best_params = study.best_params
+
     # Restore the original logging level
     optuna.logging.set_verbosity(verbose)
 
