@@ -1,13 +1,12 @@
 import numpy as np
 import pandas as pd
 import sklearn.metrics
-import lightgbm as lgb
 
 from typing import Tuple, Optional, Any
-from flameai.train import gen_threshold
+from .train import gen_threshold
 
 
-def lgb_feature_importance(gbm: lgb.Booster) -> None:
+def lgb_feature_importance(gbm) -> None:
     """
     Calculate the importance of features in a LightGBM model.
 

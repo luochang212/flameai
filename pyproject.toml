@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "flameai"
-version = "1.0.1"
+version = "1.0.2"
 description = "Deep Learning Toolkit."
 readme = "README.md"
 keywords = [
@@ -16,7 +16,7 @@ authors = [
   { name = "luochang" },
   { email = "luochang212@gmail.com" },
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 dependencies = [
   "numpy>=1.26.4",
   "pandas>=2.2.0",
@@ -25,6 +25,8 @@ dependencies = [
   "matplotlib>=3.8.4",
   "seaborn>=0.13.2",
   "optuna>=3.6.1",
+  "click>=8.1.7",
+  "torch>=2.2.2",
 ]
 classifiers = [
   "License :: OSI Approved :: Apache Software License",
@@ -34,14 +36,16 @@ classifiers = [
   "Operating System :: Unix",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 
+[project.scripts]
+hey = "flameai.cmd:hey"
+hve = "flameai.cmd:hive_cli"
+cev = "flameai.__main__:check_env"
 
 [project.urls]
 repository = "https://github.com/luochang212/flameai"

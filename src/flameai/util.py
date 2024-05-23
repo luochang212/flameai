@@ -1,4 +1,5 @@
 import os
+import logging
 import pandas as pd
 
 
@@ -30,6 +31,27 @@ def read_csv(file_path: str,
                        on_bad_lines=on_bad_lines,
                        encoding=encoding,
                        dtype=dtype)
-    
-    
-    
+
+
+def set_logger(name: str = 'flameai', level: int = logging.WARNING):
+    """
+    Set up the logger for the application.
+    """
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.DEBUG)
+
+    # Create stream_handler and set level
+    stream_handler = logging.StreamHandler()
+    stream_handler.setLevel(level)
+
+    # Create formatter
+    formatter = logging.Formatter(
+        fmt = '%(asctime)s %(levelname)s [%(name)s]: (%(module)s:%(funcName)s(%(lineno)d)) - %(message)s',
+        datefmt = '%Y-%m-%d %H:%M:%S'
+    )
+    stream_handler.setFormatter(formatter)  # add formatter to stream_handler
+
+    # add stream_handler to logger
+    logger.addHandler(stream_handler)
+
+    return logger
