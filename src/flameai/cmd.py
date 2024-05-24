@@ -7,7 +7,7 @@ from ._env import check_hive_env
 from .util import set_logger
 
 
-logger = set_logger()
+logger = set_logger(__name__)
 
 
 @click.command()

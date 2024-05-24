@@ -3,7 +3,7 @@ import subprocess
 from .util import set_logger
 
 
-logger = set_logger()
+logger = set_logger(__name__)
 
 
 HAS_TORCH = None

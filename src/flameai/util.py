@@ -36,7 +36,7 @@ def read_csv(
                        dtype=dtype)
 
 
-def set_logger(name: str = 'FlameAI', level: int = logging.WARNING):
+def set_logger(name: str, level: int = logging.WARNING):
     """
     Set up the logger for the application.
     """
