@@ -40,4 +40,4 @@ jobs:
           pip install flake8-import-order
 
       - name: Run nox
-        run: nox --import-order-style google
+        run: nox --non-interactive --error-on-missing-interpreter

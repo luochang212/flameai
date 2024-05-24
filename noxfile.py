@@ -11,4 +11,5 @@ def tests(session):
 @nox.session
 def lint(session):
     session.install('flake8')
-    session.run('flake8')
+    session.install('flake8-import-order')
+    session.run('flake8', '--import-order-style', 'google')
