@@ -1,9 +1,10 @@
 import os
 import subprocess
+
 import click
 
-from .util import set_logger
 from ._env import check_hive_env
+from .util import set_logger
 
 
 logger = set_logger()

@@ -1,5 +1,5 @@
-import pandas as pd
 from flameai.mining import value_counts
+import pandas as pd
 
 
 def test_value_counts():
@@ -8,4 +8,4 @@ def test_value_counts():
                        })
     result = value_counts(df)
     assert result.equals(pd.DataFrame({'col_name': ['a', 'b'],
-                                        'val_cnt': [7, 8]}))
+                                       'val_cnt': [7, 8]}))

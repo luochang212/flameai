@@ -1,5 +1,5 @@
+from flameai.preprocessing import DataLoader, gen_scale_pos_weight, label_encoder
 import pandas as pd
-from flameai.preprocessing import label_encoder, gen_scale_pos_weight, DataLoader
 
 
 def test_label_encoder():

@@ -1,5 +1,6 @@
-import os
 import logging
+import os
+
 import pandas as pd
 
 
@@ -9,7 +10,8 @@ def gen_abspath(directory: str, rel_path: str) -> str:
 
     :param directory: The specified directory, which can be either an absolute or a relative path.
     :param rel_path: The relative path with respect to the 'dir'.
-    :return: The resulting absolute path formed by concatenating the absolute directory and the relative path.
+    :return: The resulting absolute path formed by concatenating the absolute directory
+             and the relative path.
     """
     abs_dir = os.path.abspath(directory)
     return os.path.join(abs_dir, rel_path)
@@ -47,7 +49,8 @@ def set_logger(name: str = 'FlameAI', level: int = logging.WARNING):
 
     # Create formatter
     formatter = logging.Formatter(
-        fmt='%(asctime)s %(levelname)s [%(name)s]: (%(module)s:%(funcName)s(%(lineno)d)) - %(message)s',
+        fmt='%(asctime)s %(levelname)s [%(name)s]: '
+            '(%(module)s:%(funcName)s(%(lineno)d)) - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
     stream_handler.setFormatter(formatter)  # add formatter to stream_handler

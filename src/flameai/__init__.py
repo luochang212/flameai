@@ -1,15 +1,16 @@
-from flameai import util
-from flameai import preprocessing
-from flameai import train
 from flameai import metrics
 from flameai import mining
 from flameai import plot
+from flameai import preprocessing
+from flameai import train
+from flameai import util
+
 
 __all__ = [
-    'util',
-    'preprocessing',
-    'train',
     'metrics',
     'mining',
     'plot',
+    'preprocessing',
+    'train',
+    'util',
 ]

@@ -1,18 +1,17 @@
-import numpy as np
-import scipy
-import optuna
-
 from typing import Optional
+
+import numpy as np
+import optuna
+import scipy
 
 
 class AdaptiveLearningRate:
     """Customized learning rate decay"""
 
     def __init__(self,
-        learning_rate: float = 0.3,
-        decay_rate: float = 0.9,
-        patience: int = 10
-    ) -> None:
+                 learning_rate: float = 0.3,
+                 decay_rate: float = 0.9,
+                 patience: int = 10) -> None:
         self.learning_rate = learning_rate
         self.decay_rate = decay_rate
         self.patience = patience
@@ -35,7 +34,10 @@ class AdaptiveLearningRate:
             pre = self.learning_rate
             self.learning_rate *= self.decay_rate
             if env.params.get('verbose', 0) >= 0:
-                print(f"Learning rate ==> {self.learning_rate:.3f} (-{pre - self.learning_rate:.4f})")
+                print(
+                    f"Learning rate ==> {self.learning_rate:.3f} "
+                    f"(-{pre - self.learning_rate:.4f})"
+                )
             self.wait_count = 0  # Reset wait_count
 
         # Update the learning rate

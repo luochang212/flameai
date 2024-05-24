@@ -1,7 +1,7 @@
-import pandas as pd
-import sklearn.metrics
 import matplotlib.pyplot as plt
+import pandas as pd
 import seaborn as sns
+import sklearn.metrics
 
 
 def roc_curve(y_true, y_score) -> None:

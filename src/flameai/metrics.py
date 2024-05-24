@@ -1,7 +1,8 @@
+from enum import Enum
+from typing import Any, Optional, Tuple
+
 import sklearn.metrics
 
-from enum import Enum
-from typing import Tuple, Optional, Any
 from .train import gen_threshold
 
 
@@ -60,7 +61,8 @@ def eval_binary(
                       the optuna package will be used to calculate the optimal threshold.
     :param metric: The metric used to evaluate the model. Default is Metric.F1_SCORE.
     :param n_trials: The number of trials for threshold generation. Default is 200.
-    :param ret: A flag to indicate if the function should return the predicted labels and threshold. Default is False.
+    :param ret: A flag to indicate if the function should return the predicted
+                labels and threshold. Default is False.
     :return: If ret is True, the function returns the predicted labels and threshold.
     """
 
