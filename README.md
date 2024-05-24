@@ -90,6 +90,12 @@ pip install pytest
 
 # run tests
 pytest
+
+# install nox
+pip install nox
+
+# run nox
+nox
 ```
 
 Lint:
