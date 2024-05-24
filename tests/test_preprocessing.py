@@ -1,11 +1,12 @@
 from flameai.preprocessing import DataLoader, gen_scale_pos_weight, label_encoder
+import numpy as np
 import pandas as pd
 
 
 def test_label_encoder():
     df = pd.DataFrame({'a': ['a', 'b', 'c', 'a', 'b', 'c'],
                        'b': [1, 2, 3, 2, 1, 0]})
-    result = label_encoder(df)
+    result = label_encoder(df).reset_index(drop=True)
     assert result.equals(pd.DataFrame({'a': [0, 1, 2, 0, 1, 2],
                                        'b': [1, 2, 3, 2, 1, 0]}))
 
