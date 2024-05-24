@@ -1,5 +1,19 @@
 import subprocess
-import torch
+
+from .util import set_logger
+
+
+logger = set_logger()
+
+
+HAS_TORCH = None
+try:
+    import torch
+    HAS_TORCH = True
+except ImportError:
+    HAS_TORCH = False
+    logger.warning("PyTorch not found. Please install it using 'pip install torch'")
+    logger.warning("or 'pip install torch -i https://mirrors.aliyun.com/pypi/simple/'")
 
 
 def check_python_env() -> int:
@@ -49,4 +63,5 @@ def try_gpu(i: int = 0):
 if __name__ == '__main__':
     print('check_python_env:', check_python_env())
     print('check_hive_env:', check_hive_env())
-    print('try_gpu:', try_gpu())
+    if HAS_TORCH:
+        print('try_gpu:', try_gpu())

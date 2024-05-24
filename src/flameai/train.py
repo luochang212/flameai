@@ -1,16 +1,18 @@
 import numpy as np
 import scipy
-import sklearn.metrics
 import optuna
+
+from typing import Optional
 
 
 class AdaptiveLearningRate:
     """Customized learning rate decay"""
+
     def __init__(self,
-                 learning_rate: float = 0.3,
-                 decay_rate: float = 0.9,
-                 patience: int = 10
-        ) -> None:
+        learning_rate: float = 0.3,
+        decay_rate: float = 0.9,
+        patience: int = 10
+    ) -> None:
         self.learning_rate = learning_rate
         self.decay_rate = decay_rate
         self.patience = patience
@@ -52,10 +54,10 @@ def gen_threshold(y_true, y_pred, metric, n_trials: int) -> float:
     def objective(trial):
         t = trial.suggest_float('threshold', 0.0, 1.0)
         y_label = [1 if e > t else 0 for e in y_pred]
-        return metric(y_true = y_true, y_pred = y_label)
+        return metric(y_true=y_true, y_pred=y_label)
 
-    study = optuna.create_study(direction = 'maximize')
-    study.optimize(objective, n_trials = n_trials)
+    study = optuna.create_study(direction='maximize')
+    study.optimize(objective, n_trials=n_trials)
     best_params = study.best_params
 
     # Restore the original logging level
@@ -64,7 +66,7 @@ def gen_threshold(y_true, y_pred, metric, n_trials: int) -> float:
     return best_params['threshold']
 
 
-def gen_threshold_cdf(y_pred, rate: float, interval: int = 100) -> float:
+def gen_threshold_cdf(y_pred, rate: float, interval: int = 100) -> Optional[float]:
     """
     Finds the optimal threshold based on the desired proportion of negative samples (label 0)
 
@@ -81,8 +83,7 @@ def gen_threshold_cdf(y_pred, rate: float, interval: int = 100) -> float:
     px = 0
     for x, y in zip(xx, cdf):
         if y > rate:
-            xa = (px + x) / 2
-            break
+            return (px + x) / 2
         px = x
 
-    return xa
+    return None

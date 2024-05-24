@@ -31,7 +31,7 @@ def hive_cli(file_name: str) -> None:
         try:
             res = subprocess.run(command, shell=True, text=True)
             if res.returncode != 0:
-                logger.warning(f'Failed to execute query.')
+                logger.warning('Failed to execute query.')
                 logger.error(f'Error: {res.stderr}')
                 logger.error(f'returncode: {res.returncode}')
         except Exception as e:

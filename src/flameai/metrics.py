@@ -1,5 +1,3 @@
-import numpy as np
-import pandas as pd
 import sklearn.metrics
 
 from enum import Enum
@@ -21,9 +19,9 @@ def lgb_feature_importance(gbm) -> None:
     :param gbm: The trained LightGBM model.
     """
     items = [(k, v) for k, v in zip(gbm.feature_name(), gbm.feature_importance())]
-    sorted_items = sorted(items, key = lambda e: e[1], reverse = True)
+    sorted_items = sorted(items, key=lambda e: e[1], reverse=True)
     for i, (k, v) in enumerate(sorted_items):
-        print(f'[rank {i+1}] {k}: {v}')
+        print(f'[rank {i + 1}] {k}: {v}')
 
 
 def eval_continuous(y_true, y_pred) -> None:
@@ -43,13 +41,14 @@ def eval_continuous(y_true, y_pred) -> None:
     print(f'r2_score: {r2_score:.5f}')
 
 
-def eval_binary(y_true,
-                y_pred,
-                threshold: Optional[float] = None,
-                metric: Metric = Metric.F1_SCORE,
-                n_trials: int = 200,
-                ret: bool = False
-    ) -> Optional[Tuple[Any, float]]:
+def eval_binary(
+    y_true,
+    y_pred,
+    threshold: Optional[float] = None,
+    metric: Metric = Metric.F1_SCORE,
+    n_trials: int = 200,
+    ret: bool = False
+) -> Optional[Tuple[Any, float]]:
     """
     Evaluate a binary classification task.
 
@@ -66,8 +65,8 @@ def eval_binary(y_true,
     """
 
     # Metrics that can be directly calculated using y_pred
-    auc = sklearn.metrics.roc_auc_score(y_true = y_true, y_score = y_pred)
-    log_loss = sklearn.metrics.log_loss(y_true = y_true, y_pred = y_pred)
+    auc = sklearn.metrics.roc_auc_score(y_true=y_true, y_score=y_pred)
+    log_loss = sklearn.metrics.log_loss(y_true=y_true, y_pred=y_pred)
 
     # If the threshold does not exist, obtain it
     if threshold is None:
@@ -76,11 +75,11 @@ def eval_binary(y_true,
     y_label = [1 if e > threshold else 0 for e in y_pred]
 
     # Metrics that require the predicted labels (y_label)
-    acc = sklearn.metrics.accuracy_score(y_true = y_true, y_pred = y_label)
-    precision = sklearn.metrics.precision_score(y_true = y_true, y_pred = y_label)
-    recall = sklearn.metrics.recall_score(y_true = y_true, y_pred = y_label)
-    f1 = sklearn.metrics.f1_score(y_true = y_true, y_pred = y_label)
-    cm = sklearn.metrics.confusion_matrix(y_true = y_true, y_pred = y_label)
+    acc = sklearn.metrics.accuracy_score(y_true=y_true, y_pred=y_label)
+    precision = sklearn.metrics.precision_score(y_true=y_true, y_pred=y_label)
+    recall = sklearn.metrics.recall_score(y_true=y_true, y_pred=y_label)
+    f1 = sklearn.metrics.f1_score(y_true=y_true, y_pred=y_label)
+    cm = sklearn.metrics.confusion_matrix(y_true=y_true, y_pred=y_label)
     tn, fp, fn, tp = cm.ravel()
 
     print(f'threshold: {threshold:.5f}')
