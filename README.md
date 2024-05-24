@@ -82,6 +82,27 @@ pip install -e .
 pip uninstall flameai
 ```
 
+Test:
+
+```
+# install pytest
+pip install pytest
+
+# run tests
+pytest
+```
+
+Lint:
+
+```
+# install flake8 and flake8-import-order
+pip install flake8
+pip install flake8-import-order
+
+# lint
+flake8 --import-order-style google
+```
+
 ## Development
 
 Build:
