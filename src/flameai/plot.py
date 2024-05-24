@@ -39,3 +39,5 @@ def confusion_matrix(y_true, y_label) -> None:
                              columns=['Predict Negative:0', 'Predict Positive:1'],
                              index=['Actual Negative:0', 'Actual Positive:1'])
     sns.heatmap(cm_matrix, annot=True, fmt='d', cmap='YlGnBu')
+
+    plt.show()
