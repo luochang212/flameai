@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "flameai"
-version = "1.0.4"
+version = "1.0.5"
 description = "Deep Learning Toolkit."
 readme = "README.md"
 keywords = [
