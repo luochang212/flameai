@@ -118,5 +118,5 @@ Upload:
 ```bash
 python3 -m pip install --upgrade twine
 
-twine upload dist/* 
+twine upload dist/*
 ```
