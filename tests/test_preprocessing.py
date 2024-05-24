@@ -1,5 +1,4 @@
 from flameai.preprocessing import DataLoader, gen_scale_pos_weight, label_encoder
-import numpy as np
 import pandas as pd
 
 
