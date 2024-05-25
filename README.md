@@ -1,6 +1,6 @@
 # 🔥 FlameAI
 
-Deep Learning Toolkit.
+Python Deep Learning Toolkit.
 
 ## Installation
 

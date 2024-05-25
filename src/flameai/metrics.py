@@ -48,7 +48,8 @@ def eval_binary(
     threshold: Optional[float] = None,
     metric: Metric = Metric.F1_SCORE,
     n_trials: int = 200,
-    ret: bool = False
+    ret: bool = False,
+    verbose: int = 10
 ) -> Optional[Tuple[Any, float]]:
     """
     Evaluate a binary classification task.
@@ -84,18 +85,19 @@ def eval_binary(
     cm = sklearn.metrics.confusion_matrix(y_true=y_true, y_pred=y_label)
     tn, fp, fn, tp = cm.ravel()
 
-    print(f'threshold: {threshold:.5f}')
-    print(f'accuracy: {acc:.5f}')
-    print(f'precision: {precision:.5f}')
-    print(f'recall: {recall:.5f}')
-    print(f'f1_score: {f1:.5f}')
-    print(f'auc: {auc:.5f}')
-    print(f'cross-entropy loss: {log_loss:.5f}')
-    print(f'True Positive (TP): {tp}')
-    print(f'True Negative (TN): {tn}')
-    print(f'False Positive (FP): {fp}')
-    print(f'False Negative (FN): {fn}')
-    print(f'confusion matrix:\n{cm}')
+    if verbose > 0:
+        print(f'threshold: {threshold:.5f}')
+        print(f'accuracy: {acc:.5f}')
+        print(f'precision: {precision:.5f}')
+        print(f'recall: {recall:.5f}')
+        print(f'f1_score: {f1:.5f}')
+        print(f'auc: {auc:.5f}')
+        print(f'cross-entropy loss: {log_loss:.5f}')
+        print(f'True Positive (TP): {tp}')
+        print(f'True Negative (TN): {tn}')
+        print(f'False Positive (FP): {fp}')
+        print(f'False Negative (FN): {fn}')
+        print(f'confusion matrix:\n{cm}')
 
     if ret:
         return y_label, threshold
