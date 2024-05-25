@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import sklearn.preprocessing
+from sklearn.preprocessing import LabelEncoder
 
 
 def label_encoder(df: pd.DataFrame) -> pd.DataFrame:
@@ -9,7 +9,7 @@ def label_encoder(df: pd.DataFrame) -> pd.DataFrame:
     """
     cat_feats = [col for col in df.columns if df[col].dtypes == np.dtype('object')]
     for col in cat_feats:
-        df[col] = sklearn.preprocessing.LabelEncoder().fit_transform(df[col])
+        df[col] = LabelEncoder().fit_transform(df[col])
     return df
 
 

@@ -1,10 +1,5 @@
 import subprocess
 
-from .util import set_logger
-
-
-logger = set_logger(__name__)
-
 
 HAS_TORCH = None
 try:
@@ -12,8 +7,6 @@ try:
     HAS_TORCH = True
 except ImportError:
     HAS_TORCH = False
-    logger.warning("PyTorch not found. Please install it using 'pip install torch'")
-    logger.warning("or 'pip install torch -i https://mirrors.aliyun.com/pypi/simple/'")
 
 
 def check_python_env() -> int:

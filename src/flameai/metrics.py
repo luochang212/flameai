@@ -25,7 +25,7 @@ def lgb_feature_importance(gbm) -> None:
         print(f'[rank {i + 1}] {k}: {v}')
 
 
-def eval_continuous(y_true, y_pred) -> None:
+def eval_regression(y_true, y_pred) -> None:
     """
     This function evaluates the performance of a regression model by calculating
     the Mean Absolute Error (MAE), Mean Squared Error (MSE), and R-squared (R2) score.
@@ -37,8 +37,8 @@ def eval_continuous(y_true, y_pred) -> None:
     mse = sklearn.metrics.mean_squared_error(y_true, y_pred)
     r2_score = sklearn.metrics.r2_score(y_true, y_pred)
 
-    print(f'mae: {mae:.5f}')
-    print(f'mse: {mse:.5f}')
+    print(f'mae:      {mae:.5f}')
+    print(f'mse:      {mse:.5f}')
     print(f'r2_score: {r2_score:.5f}')
 
 

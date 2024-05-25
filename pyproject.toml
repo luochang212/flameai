@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "flameai"
-version = "1.0.5"
+version = "1.0.6"
 description = "Deep Learning Toolkit."
 readme = "README.md"
 keywords = [
@@ -45,7 +45,7 @@ classifiers = [
 
 [project.scripts]
 hey = "flameai.cmd:hey"
-hve = "flameai.cmd:hive_cli"
+hve = "flameai.hive:hive_cli"
 cev = "flameai.__main__:check_env"
 
 [project.urls]
