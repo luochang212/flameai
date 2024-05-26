@@ -49,6 +49,8 @@ confusion matrix:
  [1 3]]
 ```
 
+Other examples: [examples](/examples/)
+
 ## Test Locally
 
 Create a conda environment:
