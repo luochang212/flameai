@@ -3,7 +3,6 @@
 [![License](https://img.shields.io/github/license/luochang212/flameai)](https://github.com/luochang212/flameai)
 [![PyPI](https://img.shields.io/pypi/v/flameai.svg?logo=python)](https://pypi.python.org/pypi/flameai)
 [![GitHub](https://img.shields.io/github/v/release/luochang212/flameai?logo=github&sort=semver)](https://github.com/luochang212/flameai)
-[![CI](https://github.com/luochang212/flameai/workflows/CI/badge.svg)](https://github.com/luochang212/flameai/actions?query=workflow:CI)
 [![Downloads](https://static.pepy.tech/personalized-badge/flameai?period=total&units=international_system&left_color=grey&right_color=green&left_text=Downloads)](https://pepy.tech/project/flameai)
 
 Python Deep Learning Toolkit.
