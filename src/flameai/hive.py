@@ -12,7 +12,7 @@ logger = set_logger(__name__)
 
 @click.command()
 @click.argument('file_name', type=str)
-@click.option('-o', '--opt', is_flag=True, default=False, help='Optimize query efficiency using hiveconf.')
+@click.option('-o', '--opt', is_flag=True, default=False, help='Use hiveconf.')
 @click.option('-r', '--header', is_flag=True, default=False, help='Print header.')
 def hive_cli(file_name: str, opt: bool, header: bool) -> None:
     """Execute Hive query and redirect the output to a CSV file."""
@@ -23,19 +23,21 @@ def hive_cli(file_name: str, opt: bool, header: bool) -> None:
     else:
         conf = ''
         if opt:
-            conf += ('-hiveconf hive.exec.parallel=true '
-                       '-hiveconf hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat '
-                       '-hiveconf hive.hadoop.supports.splittable.combineinputformat=true '
-                       '-hiveconf mapreduce.map.memory.mb=4096 '
-                       '-hiveconf mapreduce.map.java.opts=-Xmx3072m '
-                       '-hiveconf mapreduce.reduce.memory.mb=4096 '
-                       '-hiveconf mapreduce.reduce.java.opts=-Xmx3072m '
-                       '-hiveconf hive.merge.mapfiles=true '
-                       '-hiveconf hive.merge.mapredfiles=true '
-                       '-hiveconf hive.merge.size.per.task=256000000 '
-                       '-hiveconf hive.merge.smallfiles.avgsize=256000000 '
-                       '-hiveconf hive.auto.convert.join=true '
-                       '-hiveconf hive.mapjoin.smalltable.filesize=25000000 ')
+            conf += (
+                '-hiveconf hive.exec.parallel=true '
+                '-hiveconf hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat '
+                '-hiveconf hive.hadoop.supports.splittable.combineinputformat=true '
+                '-hiveconf mapreduce.map.memory.mb=4096 '
+                '-hiveconf mapreduce.map.java.opts=-Xmx3072m '
+                '-hiveconf mapreduce.reduce.memory.mb=4096 '
+                '-hiveconf mapreduce.reduce.java.opts=-Xmx3072m '
+                '-hiveconf hive.merge.mapfiles=true '
+                '-hiveconf hive.merge.mapredfiles=true '
+                '-hiveconf hive.merge.size.per.task=256000000 '
+                '-hiveconf hive.merge.smallfiles.avgsize=256000000 '
+                '-hiveconf hive.auto.convert.join=true '
+                '-hiveconf hive.mapjoin.smalltable.filesize=25000000 '
+            )
         if header:
             conf += 'hive.cli.print.header=true '
         command = f'hive {conf}-f {file_name}.hql > {file_name}.csv'
