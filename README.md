@@ -1,6 +1,6 @@
-<p align="center">
+<!-- <p align="center">
 <img src="https://github.com/luochang212/flameai/raw/main/docs/_static/flame.jpeg" alt="logo" width=88%>
-</p>
+</p> -->
 
 
 # 🔥 FlameAI
