@@ -1,3 +1,5 @@
+![logo](/docs/_static/logo.jpeg)
+
 # 🔥 FlameAI
 
 [![License](https://img.shields.io/github/license/luochang212/flameai)](https://github.com/luochang212/flameai)

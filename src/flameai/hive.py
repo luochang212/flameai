@@ -39,7 +39,7 @@ def hive_cli(file_name: str, opt: bool, header: bool) -> None:
                 '-hiveconf hive.mapjoin.smalltable.filesize=25000000 '
             )
         if header:
-            conf += 'hive.cli.print.header=true '
+            conf += '-hiveconf hive.cli.print.header=true '
         command = f'hive {conf}-f {file_name}.hql > {file_name}.csv'
         logger.info(f'Run `{command}`')
 
