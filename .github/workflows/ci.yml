@@ -1,4 +1,4 @@
-name: Run nox tests
+name: CI
 
 on:
   push:
