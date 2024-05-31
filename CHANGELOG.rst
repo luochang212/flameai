@@ -3,9 +3,9 @@
 Version 1.0.7
 -------------
 
-Unreleased
+Released 2024-05-31
 
--   Added two optional arguments ``opt``, ``header`` to the ``hive_cli`` function.
+-   Added two optional arguments ``--conf``, ``--print`` to the ``hive_cli`` function.
 
 
 Version 1.0.6
