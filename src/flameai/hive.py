@@ -12,8 +12,8 @@ logger = set_logger(__name__)
 
 @click.command()
 @click.argument('file_name', type=str)
-@click.option('-o', '--opt', is_flag=True, default=False, help='Use hiveconf.')
-@click.option('-r', '--header', is_flag=True, default=False, help='Print header.')
+@click.option('-c', '--conf', is_flag=True, default=False, help='Optimize computation using Hive conf.')
+@click.option('-p', '--print', is_flag=True, default=False, help='Print header.')
 def hive_cli(file_name: str, opt: bool, header: bool) -> None:
     """Execute Hive query and redirect the output to a CSV file."""
     if not os.path.isfile(f'{file_name}.hql'):
