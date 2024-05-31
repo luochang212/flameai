@@ -12,7 +12,7 @@ logger = set_logger(__name__)
 
 @click.command()
 @click.argument('file_name', type=str)
-@click.option('-c', '--conf', is_flag=True, default=False, help='Optimize computation using Hive conf.')
+@click.option('-c', '--conf', is_flag=True, default=False, help='Using Hive conf.')
 @click.option('-p', '--print', is_flag=True, default=False, help='Print header.')
 def hive_cli(file_name: str, opt: bool, header: bool) -> None:
     """Execute Hive query and redirect the output to a CSV file."""
