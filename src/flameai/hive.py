@@ -12,9 +12,9 @@ logger = set_logger(__name__)
 
 @click.command()
 @click.argument('file_name', type=str)
-@click.option('-c', '--conf', is_flag=True, default=False, help='Using Hive conf.')
+@click.option('-o', '--opt', is_flag=True, default=False, help='Using Optimized Hive conf.')
 @click.option('-p', '--print', is_flag=True, default=False, help='Print header.')
-def hive_cli(file_name: str, opt: bool, header: bool) -> None:
+def hive_cli(file_name: str, opt: bool, print: bool) -> None:
     """Execute Hive query and redirect the output to a CSV file."""
     if not os.path.isfile(f'{file_name}.hql'):
         logger.warning(f'{file_name}.hql not found.')
@@ -38,7 +38,7 @@ def hive_cli(file_name: str, opt: bool, header: bool) -> None:
                 '-hiveconf hive.auto.convert.join=true '
                 '-hiveconf hive.mapjoin.smalltable.filesize=25000000 '
             )
-        if header:
+        if print:
             conf += '-hiveconf hive.cli.print.header=true '
         command = f'hive {conf}-f {file_name}.hql > {file_name}.csv'
         logger.info(f'Run `{command}`')
