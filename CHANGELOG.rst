@@ -1,5 +1,13 @@
 .. currentmodule:: flameai
 
+Version 1.0.8
+-------------
+
+Released 2024-06-01
+
+-   Fix an error caused by the ``hive_cli`` function
+
+
 Version 1.0.7
 -------------
 
