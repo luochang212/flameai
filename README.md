@@ -60,7 +60,7 @@ confusion matrix:
  [1 3]]
 ```
 
-Other examples: [examples](/examples/)
+More examples: [examples](/examples/)
 
 ## Test Locally
 
