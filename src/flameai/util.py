@@ -23,7 +23,8 @@ def read_csv(
     header: int = 0,
     on_bad_lines: str = 'warn',
     encoding: str = 'utf-8',
-    dtype: dict = None
+    dtype: dict = None,
+    **kwargs
 ) -> pd.DataFrame:
     """
     Read a CSV file from the specified path.
@@ -33,7 +34,8 @@ def read_csv(
                        sep=sep,
                        on_bad_lines=on_bad_lines,
                        encoding=encoding,
-                       dtype=dtype)
+                       dtype=dtype,
+                       **kwargs)
 
 
 def set_logger(name: str, level: int = logging.WARNING):
