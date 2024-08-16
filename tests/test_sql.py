@@ -6,7 +6,7 @@ import pandas as pd
 def test_create_table():
     sc = SQLConnect()
     df = pd.DataFrame({'a': ['a', 'b', 'c', 'a', 'b', 'c'],
-                       'b': [1, 2, 3, 2, 1, 0]})    
+                       'b': [1, 2, 3, 2, 1, 0]})
     sc.create_table(table_name='table_a', df=df)
     result = sc.sql('select a, b from table_a')
     sc.delete_database()
@@ -54,7 +54,9 @@ def test_table_join():
     result = sc.sql(query)
     sc.delete_database()
 
-    assert result['name'].to_list() == ['John Smith'] * 4 + ['Emily Johnson'] * 3 + ['Michael Brown'] * 3
+    assert result['name'].to_list() == ['John Smith'] * 4 + ['Emily Johnson'] * 3 + \
+        ['Michael Brown'] * 3
     assert result['age'].to_list() == [18, 18, 18, 18, 23, 23, 23, 23, 23, 23]
-    assert result['course'].to_list() == ['Art', 'Design', 'English', 'Geography', 'English', 'History',
-                                          'Music', 'Computing', 'English', 'Technology']
+    assert result['course'].to_list() == ['Art', 'Design', 'English', 'Geography',
+                                          'English', 'History', 'Music', 'Computing',
+                                          'English', 'Technology']
