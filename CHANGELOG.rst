@@ -1,5 +1,13 @@
 .. currentmodule:: flameai
 
+Version 1.0.9
+-------------
+
+Released 2024-08-16
+
+-   Execute SQL code using SQLite.
+
+
 Version 1.0.8
 -------------
 

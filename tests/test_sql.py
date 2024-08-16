@@ -17,7 +17,7 @@ def test_create_table():
 
 def test_create_table_with_csv():
     sc = SQLConnect()
-    csv_path = gen_abspath('../data', 'student.csv')
+    csv_path = gen_abspath('./data', 'student.csv')
     sc.create_table_with_csv(table_name='table_student',
                              csv_path=csv_path,
                              sep='\t')
@@ -34,8 +34,8 @@ def test_create_table_with_csv():
 
 def test_table_join():
     sc = SQLConnect()
-    student_path = gen_abspath('../data', 'student.csv')
-    course_path = gen_abspath('../data', 'course.csv')
+    student_path = gen_abspath('./data', 'student.csv')
+    course_path = gen_abspath('./data', 'course.csv')
     sc.create_table_with_csv(table_name='table_student',
                              csv_path=student_path,
                              sep='\t')
